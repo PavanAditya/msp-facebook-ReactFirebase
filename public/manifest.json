@@ -1,6 +1,6 @@
 {
-  "short_name": "React App",
-  "name": "Create React App Sample",
+  "short_name": "MSP Facebook",
+  "name": "A Simple React App built as a sample for facebook.",
   "icons": [
     {
       "src": "favicon.ico",

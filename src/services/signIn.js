@@ -1,13 +1,14 @@
-import { firebaseApp } from '../firebase';
+import { firebaseApp, userRef } from '../firebase';
 
-export default (email, password) => {
-    firebaseApp.auth().signInWithEmailAndPassword(email, password).then((user) => {
-        console.log(user);
-        console.log('User fetched from DB');
+export default ({ email, password }) => {
+    firebaseApp.auth().signInWithEmailAndPassword(email, password).then((data) => {
+        userRef.child(data.user.uid).once('value', (snapshot) => {
+            console.log(snapshot.val());
+            return snapshot.val();
+        });
         return true;
     }).catch((err) => {
         console.log(err.message);
-        console.log(err);
         return err;
     });
 }
