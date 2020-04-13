@@ -1,0 +1,15 @@
+.addPostBox {
+    color: black !important;
+}
+
+.custom-textArea {
+    border: 1px solid grey !important;
+    border-radius: 10px !important;
+    padding: 5px !important;
+    height: 75px !important;
+}
+
+.custom-textArea:focus {
+    border:  1px solid #26a69a !important;
+    box-shadow: 0 1px 0 0 #26a69a;
+}

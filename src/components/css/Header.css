@@ -1,8 +1,10 @@
 .custom-nav {
     background: #385898;
+    width: 100%;
 }
 
 .nav-row {
     background: transparent !important;
+    color: white !important;
     box-shadow: none;
 }
