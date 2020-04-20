@@ -2,6 +2,7 @@ import { firebaseApp, userRef } from '../firebase';
 
 export default ({ email, password }) => {
     firebaseApp.auth().signInWithEmailAndPassword(email, password).then((data) => {
+        localStorage.setItem('uid', data.user.uid);
         userRef.child(data.user.uid).once('value', (snapshot) => {
             console.log(snapshot.val());
             return snapshot.val();
