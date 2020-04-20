@@ -1,12 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import '../css/Profile.css';
-import { Icon } from 'react-materialize';
+import { Icon } from '@material-ui/core';
 import { userRef, firebaseApp } from '../../firebase';
 
 const Profile = () => {
 
     const [firstName, setFirstName] = useState('');
     const [lastName, setLastName] = useState('');
+    // const [editMode, setEditMode] = useState(false);
     const [loading, setLoading] = useState(true);
     const [contact, setContact] = useState('');
     const [about, setAbout] = useState('');

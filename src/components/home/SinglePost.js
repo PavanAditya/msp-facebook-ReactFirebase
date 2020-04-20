@@ -1,13 +1,28 @@
+/* eslint-disable jsx-a11y/anchor-is-valid */
 import React, { useState, useEffect } from 'react';
 import '../css/SinglePost.css'
-import { Dropdown, Button, Icon } from 'react-materialize';
+import { Icon, Menu, MenuItem, IconButton } from '@material-ui/core';
 import { userRef } from '../../firebase';
+import deletePost from '../../services/deletePost';
+import editPost from '../../services/editPost';
 
 const SinglePost = ({ post, uid }) => {
 
     const [firstName, setFirstName] = useState('');
     const [lastName, setLastName] = useState('');
     const [loading, setLoading] = useState(true);
+    const [anchorEl, setAnchorEl] = React.useState(null);
+
+    const open = Boolean(anchorEl);
+
+
+    const handleMenu = (event) => {
+        setAnchorEl(event.currentTarget);
+    };
+
+    const handleClose = () => {
+        setAnchorEl(null);
+    };
 
     useEffect(() => {
         const getName = () => {
@@ -36,6 +51,16 @@ const SinglePost = ({ post, uid }) => {
         return diffMins === 1 ? diffMins + ' min ago' : diffMins + ' mins ago';
     }
 
+    const onPostDelete = (postKey) => {
+        const result = deletePost(postKey);
+        console.log(result);
+    };
+
+    const onPostEdit = (postKey) => {
+        const result = editPost(postKey);
+        console.log(result);
+    };
+
     return (
         <div style={{ marginTop: 25 }} className="singlePostBox">
             <div className="outerBox m10">
@@ -63,65 +88,53 @@ const SinglePost = ({ post, uid }) => {
                                 </div>
                             </div>
                             <div>
+                                <IconButton
+                                    aria-label="account of current user"
+                                    aria-controls="menu-appbar"
+                                    aria-haspopup="true"
+                                    onClick={handleMenu}
+                                    color="inherit"
+                                >
+                                    <Icon>more_vert</Icon>
+                                </IconButton>
                                 {(uid === post.createdBy) ?
-                                    <Dropdown
-                                        id={post?.key + 'y'}
-                                        options={{
-                                            alignment: 'left',
-                                            autoTrigger: true,
-                                            closeOnClick: true,
-                                            constrainWidth: true,
-                                            container: null,
-                                            coverTrigger: true,
-                                            hover: false,
-                                            inDuration: 150,
-                                            onCloseEnd: null,
-                                            onCloseStart: null,
-                                            onOpenEnd: null,
-                                            onOpenStart: null,
-                                            outDuration: 250
+                                    <Menu
+                                        id="menu-appbar"
+                                        anchorEl={anchorEl}
+                                        anchorOrigin={{
+                                            vertical: 'top',
+                                            horizontal: 'right',
                                         }}
-                                        trigger={
-                                            <Button flat node="button">
-                                                <Icon>more_vert</Icon>
-                                            </Button>
-                                        }>
-                                        <a href="w" style={{ color: 'black' }}>
-                                            Edit
-                                        </a>
-                                        <a href="w" style={{ color: 'black' }}>
-                                            Delete
-                                        </a>
-                                    </Dropdown> :
-                                    <Dropdown
-                                        id={post?.key + 'n'}
-                                        options={{
-                                            alignment: 'left',
-                                            autoTrigger: true,
-                                            closeOnClick: true,
-                                            constrainWidth: true,
-                                            container: null,
-                                            coverTrigger: true,
-                                            hover: false,
-                                            inDuration: 150,
-                                            onCloseEnd: null,
-                                            onCloseStart: null,
-                                            onOpenEnd: null,
-                                            onOpenStart: null,
-                                            outDuration: 250
+                                        keepMounted
+                                        transformOrigin={{
+                                            vertical: 'top',
+                                            horizontal: 'right',
                                         }}
-                                        trigger={
-                                            <Button flat node="button">
-                                                <Icon>more_vert</Icon>
-                                            </Button>
-                                        }>
-                                        <a href="w" style={{ color: 'black' }}>
-                                            Hide
-                                        </a>
-                                        <a href="w" style={{ color: 'black' }}>
-                                            Spam
-                                        </a>
-                                    </Dropdown>
+                                        open={open}
+                                        onClose={handleClose}
+                                    >
+                                        <MenuItem onClick={(e) => { e.preventDefault(); onPostEdit(post?.key); handleClose() }}>Edit</MenuItem>
+                                        <MenuItem onClick={(e) => { e.preventDefault(); onPostDelete(post?.key); handleClose() }}>Delete</MenuItem>
+                                    </Menu>
+                                    :
+                                    <Menu
+                                        id="menu-appbar"
+                                        anchorEl={anchorEl}
+                                        anchorOrigin={{
+                                            vertical: 'top',
+                                            horizontal: 'right',
+                                        }}
+                                        keepMounted
+                                        transformOrigin={{
+                                            vertical: 'top',
+                                            horizontal: 'right',
+                                        }}
+                                        open={open}
+                                        onClose={handleClose}
+                                    >
+                                        <MenuItem onClick={handleClose}>Hide</MenuItem>
+                                        <MenuItem onClick={handleClose}>Spam</MenuItem>
+                                    </Menu>
                                 }
                             </div>
                         </div>

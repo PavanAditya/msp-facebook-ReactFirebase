@@ -11,15 +11,6 @@
     justify-content: center;
 }
 
-.submit-button, .submit-button:hover, .submit-button:focus {
-    background: #67ae55;
-    border-radius: 5px;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3), 0 2px 10px rgba(0, 0, 0, 0.3);
-    border-color: 0px;
-    color: white;
-    font-weight: 600;
-}
-
 .toggle-class {
     color: blue;
     font-style: italic;

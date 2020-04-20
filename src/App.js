@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import "materialize-css/dist/css/materialize.min.css";
 import './App.css';
 import SignUp from './components/auth/SignUp';
 import SignIn from './components/auth/SignIn';

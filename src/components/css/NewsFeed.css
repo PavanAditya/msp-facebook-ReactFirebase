@@ -1,12 +1,9 @@
-.row {
-    width: 100%;
-}
-
 .post-feed {
     padding-top: 10px !important;
     padding-bottom: 25px !important;
+    padding-left: 25px !important;
+    padding-right: 30px !important;
     margin-top: -10px;
-    max-height: 635px;
     overflow: auto;
 }
 

@@ -9,3 +9,16 @@
 .container {
   width: 90%;
 }
+
+.MuiFormControl-root {
+  width: 100% !important;
+}
+
+.MuiInputBase-root {
+  margin: 10px !important;
+}
+
+.submit-button {
+  background-color: #385898d4 !important;
+  color: white !important;
+}

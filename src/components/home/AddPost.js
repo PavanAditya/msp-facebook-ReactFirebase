@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Row, Textarea, Button } from 'react-materialize';
+import { Grid, Button, TextField, Icon } from '@material-ui/core';
 import '../css/AddPost.css';
 import addPost from '../../services/addPost';
 import { firebaseApp } from '../../firebase';
@@ -34,23 +34,29 @@ const AddPost = () => {
     return (
         <div className="addPostBox">
             <div className="outerBox m10">
-                <h6><b>What's on your mind?</b></h6>
-                <Row style={{ marginBottom: 0 }}>
-                    <Textarea
-                        s={12}
-                        id="writePost"
-                        className="custom-textArea"
+                <p style={{ fontSize: 15 }}><b>What's on your mind?</b></p>
+                <Grid style={{ marginBottom: 0 }}>
+                    <TextField
+                        id="outlined-multiline-static"
+                        label="Write something here..."
+                        multiline
+                        rows={4}
+                        variant="outlined"
+                        xs={12}
+                        className="custom-textarea"
                         placeholder="Write something here..."
                         data-length={200}
+                        position="relative"
                         defaultValue={content}
                         onInput={event => setContent(event.target.value)} />
-                </Row>
-                <div style={{ height: 0 }}>
-                    <Button small waves="light"
-                        style={{ background: '#385898', marginTop: -60 }}
-                        onClick={AddingPost}>
+                </Grid>
+                <div style={{ marginRight: 10 }} align="right">
+                    <Button variant="contained" small waves="light"
+                        className="submit-button"
+                        onClick={AddingPost}
+                        endIcon={<Icon>send</Icon>}>
                         Post
-                        </Button>
+                    </Button>
                 </div>
             </div>
         </div>
