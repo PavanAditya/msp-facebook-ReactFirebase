@@ -51,7 +51,7 @@ const AddPost = () => {
                         onInput={event => setContent(event.target.value)} />
                 </Grid>
                 <div style={{ marginRight: 10 }} align="right">
-                    <Button variant="contained" small waves="light"
+                    <Button variant="contained"
                         className="submit-button"
                         onClick={AddingPost}
                         endIcon={<Icon>send</Icon>}>

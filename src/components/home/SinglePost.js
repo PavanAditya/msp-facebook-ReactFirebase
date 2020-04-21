@@ -1,7 +1,7 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import React, { useState, useEffect } from 'react';
 import '../css/SinglePost.css'
-import { Icon, Menu, MenuItem, IconButton } from '@material-ui/core';
+import { Icon, Menu, MenuItem, IconButton, Grid } from '@material-ui/core';
 import { userRef } from '../../firebase';
 import deletePost from '../../services/deletePost';
 import editPost from '../../services/editPost';
@@ -66,8 +66,8 @@ const SinglePost = ({ post, uid }) => {
             <div className="outerBox m10">
                 <div>
                     <div>
-                        <div style={{ display: 'flex', marginBottom: 10 }}>
-                            <div>
+                        <Grid container style={{ display: 'flex', marginBottom: 10 }}>
+                            <Grid item xs={2} sm={1} align="center">
                                 <div className="post-block">
                                     <img
                                         src={require('../../assets/images/my-image.jpg')}
@@ -76,8 +76,8 @@ const SinglePost = ({ post, uid }) => {
                                         style={{ borderRadius: 100 }}
                                     />
                                 </div>
-                            </div>
-                            <div style={{ marginLeft: 20, flex: 1, overflow: 'hidden' }}>
+                            </Grid>
+                            <Grid item xs={9} sm={10} style={{ marginLeft: 20, flex: 1, overflow: 'hidden' }}>
                                 {loading ?
                                     <div className="loading post-title"></div> :
                                     <div className="post-acc-name">
@@ -86,8 +86,8 @@ const SinglePost = ({ post, uid }) => {
                                 <div style={{ fontSize: 12, color: 'gray' }}>
                                     {getTimeDifference(post?.createdDateTime)}
                                 </div>
-                            </div>
-                            <div>
+                            </Grid>
+                            <Grid item xs={1} sm={1}>
                                 <IconButton
                                     aria-label="account of current user"
                                     aria-controls="menu-appbar"
@@ -136,8 +136,8 @@ const SinglePost = ({ post, uid }) => {
                                         <MenuItem onClick={handleClose}>Spam</MenuItem>
                                     </Menu>
                                 }
-                            </div>
-                        </div>
+                            </Grid>
+                        </Grid>
                     </div>
                     <div>
                         {post?.content}

@@ -53,8 +53,9 @@
 }
 
 .card-title.loading {
-    min-height: 40px;
-    max-height: 40px;
+    min-height: 35px;
+    max-height: 35px;
+    margin-bottom: 10px;
     width: 100%;
     border-radius: 10px;
 }

@@ -5,9 +5,11 @@ import App from './App';
 import * as serviceWorker from './serviceWorker';
 
 ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
+  // ! React.StrictMode disabled as "findDOMNode is deprecated in StrictMode" warning is being thrown -- temporary Fix
+  // <React.StrictMode>
+  <App />,
+  // </React.StrictMode>,
+  // ! React.StrictMode disabled as "findDOMNode is deprecated in StrictMode" warning is being thrown -- temporary Fix
   document.getElementById('root')
 );
 
