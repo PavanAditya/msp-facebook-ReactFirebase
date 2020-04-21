@@ -27,7 +27,7 @@ const SignIn = (props) => {
 
     return (
         <div className="home">
-            <div className="outerBox">
+            <div className="outerBox outerBox-mobile">
                 <h3>Sign In</h3>
                 <form noValidate autoComplete="off">
                     <TextField variant="outlined" id="loginEmail" onChange={e => onChangeText('email', e.target.value)} label="Email"></TextField>

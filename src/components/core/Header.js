@@ -21,7 +21,7 @@ const Header = ({ stage }) => {
 
     return (
         <div className={classes.root}>
-            <AppBar className="nav-custom" position="static">
+            <AppBar className={stage === 'authorized' ? 'nav-custom' : 'nav-custom nav-unauth'} position="static">
                 <Toolbar>
                     <Typography variant="h6" className={classes.title}>
                         {<a className="brand-logo" target="_" href="https://pavanaditya.com">

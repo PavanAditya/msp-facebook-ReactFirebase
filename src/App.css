@@ -22,3 +22,12 @@
   background-color: #385898d4 !important;
   color: white !important;
 }
+
+@media (max-width: 768px) {
+  .outerBox-mobile {
+    margin-top: 100px;
+  }
+  .nav-unauth {
+    margin-top: 0px !important;
+  }
+}
